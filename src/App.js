@@ -1,36 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
-import Home from './components/Home' ;
-import Header from './components/Header';
-import Entertainment from './components/Entertainment';
-import Sports from './components/Sports';
-import Tech from './components/Tech';
-import World from './components/World';
-import Politics from './components/Politics';
-import India from './components/India';
-import Education from './components/Education';
-import Business from './components/Business'
-import { Routes, Route } from 'react-router-dom';
-function App() {
+import React from "react"
+import Header from "./components/common/header/Header"
+import "./App.css"
+import Homepages from "./components/home/Homepages"
+import Footer from "./components/common/footer/Footer"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import SinglePage from "./components/singlepage/SinglePage"
+import Culture from "./components/culture/Culture"
+const App = () => {
   return (
-   <>
-<Header/>
-<Routes>
-  <Route exact path="/" element={<Home />} />
-  <Route exact path="/Entertainment" element= {<Entertainment/>}/>
-  <Route exact path="/Sports" element= { <Sports/>}/>
-  <Route exact path="/Tech" element= {<Tech/>}/>
-  <Route exact path="/World " element= {<World/>}/>
-  <Route exact path="/Politics" element= {<Politics/>} />
-  <Route exact path="/India" element= {<India/>}/>
-  <Route exact path="/Education" element= {<Education/>}/>
-  <Route exact path="/Business" element= {<Business/>}/>
-</Routes>
-      {/* <Home/> 
-<Entertainment/>
-<Sports/> */}
-    </>
-  );
+    <>
+      <Router>
+        <Header />
+       <Routes>
+          <Route exact path='/' component={Homepages} />
+          <Route path='/singlepage/:id' exact component={SinglePage} />
+          <Route exact path='/culture' component={Culture} />
+        </Routes>        
+        <Footer />
+        </Router>
+    </> 
+  )
 }
 
-export default App;
+export default App
